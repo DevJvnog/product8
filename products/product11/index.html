@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xiaomi 13 Ultra</title>
+    <link rel="stylesheet" href="../../styles/styleproduct13.css">
+</head>
+<div class="navbar show-menu">
+    <div class="header-inner-content">
+        <a href="../../index.html" ><h1 class="logo">Jvnog <span>STORE</span></h1></a>
+        <nav>
+  
+        </nav>
+        
+        <div class="nav-icon-container">
+        <a href="../../carrinho/index.html"><img  src="../../images/cart.png" alt=""></a>
+         
+        </div>
+
+    </div>
+</div>    
+       <div class="product-Image">
+        <img class="static" src="../../images/product-11.png" alt="">
+    </div>
+    <div class="product-Image2">
+        <img class="image2" src="../../images/product-11-2.png" alt="">
+    </div>
+    <div class="product-Image3">
+        <img class="image3" src="../../images/product-11-3.png" alt="">
+    </div>
+    <div class="product-Image4">
+         <img class="image4" src="../../images/product-11-4.png" alt="">
+    </div>
+
+    <div class="product">
+        <section>
+            <h1 class="product-name">Xiaomi 13 Ultra</h1>
+            <p>Codigo SKU: 011 <a href="#infoprdocut">|Ver Descrição</a></p>
+            <div class="image-container">
+                <img class="main-image" src="../../images/product-11.png" alt="">
+            </div>
+        </section>
+        <aside>
+            <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+            <p class="produtc-price"><span>R$</span>3.000,00 </p>
+            <button class="adicionar-ao-carrinho-btn" data-id="xiaomi13Ultra" data-nome="Xiaomi 13 Ultra" data-preco="3000.00" data-quantidade="1" data-imagem-class="https://devjvnog.github.io/Loja-Virtual/images/product-11.png">Adicionar ao Carrinho</button>
+
+        </aside>
+    </div>
+   <div>
+
+    <h1 id="infoprdocut">Informações do Produto</h1>
+    <h2><strong>Smartphone Xiaomi Redmi Note 13 256GB - 8GB Ram - Versão Global (Ice Blue) Azul</strong></h2>
+    <p>O Smartphone Xiaomi Redmi Note 13 é uma excelente opção para quem busca desempenho e capacidade de armazenamento. Com 8GB de RAM e 256GB de armazenamento interno, oferece espaço suficiente para aplicativos, jogos, fotos e muito mais. Além disso, sua versão global garante compatibilidade em diferentes países.</p>
+    <h2>Detalhes do Produto</h2>
+    <ul>
+        <li><strong>Cor:</strong> Azul</li>
+        <li><strong>Marca:</strong> Xiaomi</li>
+        <li><strong>Memória RAM:</strong> 8 GB</li>
+    </ul>
+    <h2>Certificado Homologado pela ANATEL Número</h2>
+    <p>217652209185</p>
+
+</div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $(".product-Image, .product-Image2, .product-Image3, .product-Image4").click(function() {
+            var imageSrc = $(this).find("img").attr("src");
+            $(".main-image").attr("src", imageSrc);
+        });
+    });
+
+            //DOM e OBJ de Produtos
+            document.addEventListener('DOMContentLoaded', function () {
+            const botoesAdicionar = document.querySelectorAll('.adicionar-ao-carrinho-btn');
+
+            botoesAdicionar.forEach(botao => {
+                botao.addEventListener('click', function () {
+                    const id = this.getAttribute('data-id');
+                    const nome = this.getAttribute('data-nome');
+                    const preco = parseFloat(this.getAttribute('data-preco'));
+                    const quantidade = parseInt(this.getAttribute('data-quantidade'));
+                    const imagem = this.getAttribute('data-imagem-class');
+                    adicionarAoCarrinho(id, nome, preco, quantidade, imagem);
+                });
+            });
+        });
+
+        function adicionarAoCarrinho(id, nome, preco, quantidade, imagem) {
+    // Lógica para adicionar ao carrinho
+    let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+    let produtoExistente = carrinho.find(item => item.id === id);
+
+    if (produtoExistente) {
+        produtoExistente.quantidade += quantidade;
+    } else {
+        carrinho.push({
+            id: id,
+            nome: nome,
+            preco: preco,
+            quantidade: quantidade,
+            imagem: imagem
+        });
+    }
+
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+    alert('Produto adicionado ao carrinho!');
+
+    // Após adicionar ao carrinho, chama a função para atualizar o carrinho
+    atualizarCarrinho();
+}
+    </script>
+</script>
+</html>

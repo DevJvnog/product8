@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Pagamentos</title>
+    <link rel="stylesheet" href="../styles/stylecheckout.css">
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4/build/qrcode.min.js"></script>
+</head>
+<body>
+
+<header>
+    <div class="navbar show-menu">
+        <div class="header-inner-content">
+            <a href="../index.html"><h1 class="logo">Jvnog <span>STORE</span></h1></a>
+        </div>    
+    </div>  
+</header> 
+
+<!-- Formulário de Checkout -->
+<div id="checkout-form">
+    <h2>Checkout de Pagamento</h2>
+    <form id="payment-form">
+        <div class="form-group">
+            <label for="name">Nome no Cartão</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="card-number">Número do Cartão</label>
+            <input type="text" id="card-number" name="card-number" required>
+        </div>
+        <div class="form-group">
+            <label for="expiry">Data de Expiração</label>
+            <input type="text" id="expiry" name="expiry" placeholder="MM/AA" required>
+        </div>
+        <div class="form-group">
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" name="cvv" maxlength="3" required>
+        </div>
+        <button type="submit" id="submit-button">Confirmar Pagamento</button>
+    </form>
+    <!-- Div para exibir o QR code -->
+    <div id="qrcode" style="display: none;">
+        <h3>Caso queira contribuir com meu trabalho:</h3>
+        <img id="qrcode-img" src="../images/qrcode.png" alt="QR Code" width="140" height="140">
+    </div>
+</div>
+
+<script>
+    // Função para exibir o QR code ao enviar o pagamento
+    function exibirQRCode() {
+        // Esconde o formulário de pagamento
+        document.getElementById("payment-form").style.display = "none";
+        
+        // Exibe a div do QR code
+        document.getElementById("qrcode").style.display = "block";
+    }
+
+    // Adicionar um evento de envio ao formulário de pagamento
+    document.getElementById('payment-form').addEventListener('submit', function (event) {
+        // Impedir o envio do formulário
+        event.preventDefault();
+
+        // Chama a função para exibir o QR code
+        exibirQRCode();
+    });
+</script>
+
+</body>
+</html>
